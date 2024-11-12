@@ -5,7 +5,6 @@ import com.fouadev.billingservice.feign.CustomerRestClient;
 import com.fouadev.billingservice.feign.ProductRestClient;
 import com.fouadev.billingservice.repositories.BillRepository;
 import com.fouadev.billingservice.repositories.ProductItemRepository;
-import jakarta.ws.rs.Path;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
