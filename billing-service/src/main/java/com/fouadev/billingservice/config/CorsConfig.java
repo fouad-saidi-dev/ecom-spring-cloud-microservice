@@ -1,4 +1,4 @@
-package com.fouadev.customerservice.config;
+package com.fouadev.billingservice.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -7,9 +7,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-@Configuration
+//@Configuration
 public class CorsConfig {
-    @Bean
+    //@Bean
     public CorsFilter corsFilter() {
         CorsConfiguration config = new CorsConfiguration();
         config.addAllowedOrigin("http://localhost:4200");

@@ -5,9 +5,9 @@ import com.fouadev.billingservice.feign.CustomerRestClient;
 import com.fouadev.billingservice.feign.ProductRestClient;
 import com.fouadev.billingservice.repositories.BillRepository;
 import com.fouadev.billingservice.repositories.ProductItemRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Date;
 
 /*
  Created by : Fouad SAIDI on 06/11/2024
@@ -36,5 +36,24 @@ public class BillRestController {
             pi.setProduct(productRestClient.findById(pi.getProductId()));
         });
         return bill;
+    }
+    @GetMapping("/bills")
+    public Iterable<Bill> getBills() {
+        Iterable<Bill> bills = billRepository.findAll();
+        bills.forEach(bill -> {
+            bill.setCustomer(customerRestClient.findById(bill.getCustomerId()));
+            bill.getProductItems().forEach(pi -> {
+                pi.setProduct(productRestClient.findById(pi.getProductId()));
+            });
+        });
+        return bills;
+    }
+    @PostMapping("/bills/new")
+    public Bill saveBill(@RequestBody Bill bill) {
+        Bill savedBill = Bill.builder()
+                .billingDate(new Date())
+                .customerId(bill.getCustomerId())
+                .build();
+        return billRepository.save(savedBill);
     }
 }
