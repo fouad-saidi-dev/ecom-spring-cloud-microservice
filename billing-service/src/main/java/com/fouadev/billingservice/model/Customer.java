@@ -1,7 +1,6 @@
 package com.fouadev.billingservice.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 /*
  Created by : Fouad SAIDI on 06/11/2024
@@ -11,6 +10,9 @@ import lombok.Setter;
 */
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Customer {
     private Long id;
     private String name;
